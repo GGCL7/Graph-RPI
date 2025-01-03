@@ -4,7 +4,7 @@ import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
 import os
 import pandas as pd
-import iFeatureOmegaCLI  # 确保已经安装了这个库
+import iFeatureOmegaCLI 
 import re
 import math
 
@@ -123,9 +123,9 @@ def generate_features(input_txt_path):
     DistancePair = iFeatureOmegaCLI.iProtein(input_txt_path)
     DistancePair.get_descriptor("DistancePair")
 
-    dde = feature_DDE(input_txt_path)  # 确保你有这个函数的定义
+    dde = feature_DDE(input_txt_path)  
 
-    # 重置索引
+   
     AAC.encodings = AAC.encodings.reset_index(drop=True)
     PAAC.encodings = PAAC.encodings.reset_index(drop=True)
     DistancePair.encodings = DistancePair.encodings.reset_index(drop=True)
@@ -138,10 +138,6 @@ def generate_features(input_txt_path):
 
     dde = dde.reset_index(drop=True)
     print(AAC.encodings.shape, PAAC.encodings.shape, CKSAAGP.encodings.shape, QSOrder.encodings.shape, dde.shape)
-
-    # 合并所有的特征
-    # result = pd.concat([DistancePair.encodings, CKSAAGP.encodings, QSOrder.encodings], axis=1)
-
     result = pd.concat([AAC.encodings, PAAC.encodings, CKSAAGP.encodings, QSOrder.encodings, dde], axis=1)
     result.index = PAAC2.encodings.index
     cols = result.columns.tolist()
