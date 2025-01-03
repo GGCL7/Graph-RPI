@@ -17,9 +17,8 @@ class GNNEncoder(nn.Module):
         self.convs = nn.ModuleList()
         self.bns = nn.ModuleList()
 
-        # 添加一个GAT层
+        
         self.convs.append(GATConv(in_channels, hidden_channels // heads, heads=heads))
-        # 继续使用GINConv
         self.convs.append(GINConv(Linear(hidden_channels, out_channels), train_eps=True))
         self.bns.append(nn.BatchNorm1d(hidden_channels))
         self.bns.append(nn.BatchNorm1d(out_channels))
