@@ -24,7 +24,7 @@ def parse_ids(file_path):
                 ids.append(line[1:].strip())
     return ids
 
-# 解析对文件，获取有关系的对（正样本和负样本）
+
 def parse_pairs(file_path):
     positive_pairs = []
     negative_pairs = []
@@ -41,7 +41,7 @@ protein_ids = parse_ids('Protein.txt')
 rna_ids = parse_ids('RNA.txt')
 positive_pairs, negative_pairs = parse_pairs('Pairs.txt')
 
-# 加载特征数据
+
 protein_bert_features = np.loadtxt('protein_bert.txt')
 rna_features = np.loadtxt('RNA_feature.txt')
 protein_new_features = np.loadtxt('protein_feature.txt')
@@ -54,29 +54,29 @@ print(protein.shape)
 
 output_dim = 909
 
-# 扩展 RNA 特征
+
 rna_emb = []
 for rna in range(len(RNA)):
     rna_emb.append(RNA[rna].tolist())
 rna_emb = [lst + [0] * (output_dim - len(rna_emb[0])) for lst in rna_emb]
 rna_emb = torch.Tensor(rna_emb)
 
-# 扩展蛋白质特征
+
 protein_emb = []
 for prot in range(len(protein)):
     protein_emb.append(protein[prot].tolist())
 protein_emb = [lst + [0] * (output_dim - len(protein_emb[0])) for lst in protein_emb]
 protein_emb = torch.Tensor(protein_emb)
 
-# 拼接特征矩阵
+
 feature = torch.cat([rna_emb, protein_emb])
 
-# 构建关系矩阵
+
 relation_matrix = np.zeros((len(rna_ids), len(protein_ids)), dtype=int)
 protein_id_to_index = {protein_id: index for index, protein_id in enumerate(protein_ids)}
 rna_id_to_index = {rna_id: index for index, rna_id in enumerate(rna_ids)}
 
-# 填充正样本关系矩阵
+
 for protein_id, rna_id in positive_pairs:
     if protein_id in protein_id_to_index and rna_id in rna_id_to_index:
         protein_index = protein_id_to_index[protein_id]
@@ -93,7 +93,7 @@ pos_edge_index = torch.LongTensor(pos_edge_index).t()
 
 data = Data(x=feature, edge_index=pos_edge_index)
 
-# 划分训练集和测试集
+
 train_data, _, test_data = T.RandomLinkSplit(num_val=0, num_test=0.2,
                                              is_undirected=True, split_labels=True,
                                              add_negative_train_samples=True)(data)

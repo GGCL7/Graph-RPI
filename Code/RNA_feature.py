@@ -4,7 +4,7 @@ import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
 import os
 import pandas as pd
-import iFeatureOmegaCLI  # 确保已经安装了这个库
+import iFeatureOmegaCLI  
 import re
 import math
 
@@ -28,9 +28,6 @@ def generate_features(input_txt_path):
 	PCPseDNC = iFeatureOmegaCLI.iRNA(input_txt_path)
 	PCPseDNC.get_descriptor("PCPseDNC")
 
-	# ASDC = iFeatureOmegaCLI.iRNA(input_txt_path)
-	# ASDC.get_descriptor("ASDC")
-
 	DPCP2 = iFeatureOmegaCLI.iRNA(input_txt_path)
 	DPCP2.get_descriptor("DPCP")
 
@@ -43,7 +40,7 @@ def generate_features(input_txt_path):
 	CKSNAP = iFeatureOmegaCLI.iRNA(input_txt_path)
 	CKSNAP.get_descriptor("CKSNAP type 1")
 
-	# dde = feature_DDE(input_txt_path)  # 确保你有这个函数的定义
+
 
 	# 重置索引
 	Kmer.encodings = Kmer.encodings.reset_index(drop=True)
