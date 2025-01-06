@@ -13,3 +13,28 @@ We provided our dataset and you can find them [Datasets](https://github.com/GGCL
 # Model source code
 The source code for training our models can be found here [Model source code](https://github.com/GGCL7/Graph-RPI/tree/main/Code).
 
+# ESM-2 Language model embeddings
+```bash
+https://huggingface.co/facebook/esm2_t6_8M_UR50D
+```
+
+# Predicting RNA-protein interactions
+
+## Single pair prediction
+
+To predict whether a given RNA-protein pair interacts, use the following command:
+
+```bash
+python Single_pair_prediction.py -i ./Single/Protein.fasta ./Single/RNA.fasta -o record.json
+```
+
+## Multiple pairs prediction
+To predict interactions for multiple RNA-protein pairs, use the following command:
+
+```bash
+python Multiple_pairs_prediction.py \                                                       
+    -p "./Multiple/interaction.txt" \
+    -prot "./Multiple/Protein.txt" \
+    -rna "./Multiple/RNA.txt" \
+    -o "record.json"
+```
