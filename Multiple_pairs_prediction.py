@@ -66,7 +66,6 @@ def convert_numpy_int_to_int(input_list):
 
 
 def parse_pairs(file_path):
-    """解析对文件，获取所有蛋白质-RNA对"""
     pairs = []
     with open(file_path, 'r') as file:
         for line in file:
@@ -92,9 +91,7 @@ def main(pairs_file, protein_file, rna_file, output_file):
     protein_new_features = generate_features_protein(protein_file)
     print(f"Generated protein new features with shape: {protein_new_features.shape}")
 
-
     output_dim = 909
-
 
     protein_ids = parse_ids(protein_file)
     rna_ids = parse_ids(rna_file)
@@ -112,7 +109,6 @@ def main(pairs_file, protein_file, rna_file, output_file):
     model.eval()
     print("Model loaded and set to evaluation mode.")
 
-    # 预测样本对的结果
     results = []
     positive_count = 0
 
@@ -157,7 +153,6 @@ def main(pairs_file, protein_file, rna_file, output_file):
             'prediction': int(prediction.item())
         })
 
-    # 输出预测结果到文件
     try:
         with open(output_file, 'w') as f:
             json.dump(results, f, sort_keys=True, indent=4, separators=(',', ': '))
