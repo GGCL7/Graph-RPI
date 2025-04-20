@@ -12,8 +12,8 @@ We provided our dataset and you can find them [Datasets](https://github.com/GGCL
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourname/Graph-RPI-All-Experiments.git
-cd Graph-RPI-All-Experiments
+git clone https://github.com/yourname/Graph-RPI.git
+cd Graph-RPI
 ```
 2. **Set up the Python environment**
 ```bash
