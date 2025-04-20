@@ -10,10 +10,20 @@ This RPI prediction tool developed by a team from the Chinese University of Hong
 We provided our dataset and you can find them [Datasets](https://github.com/GGCL7/Graph-RPI/tree/main/Data)
 
 
-# Model source code
-The source code for training our models can be found here [Model source code](https://github.com/GGCL7/Graph-RPI/tree/main/Code).
+## 🔧 Installation instructions
 
-# ESM-2 Language model embeddings
+1. **Clone the repository**
+```bash
+git clone https://github.com/yourname/Graph-RPI-All-Experiments.git
+cd Graph-RPI-All-Experiments
+```
+2. **Set up the Python environment**
+```bash
+conda create -n graphrpi python=3.10
+conda activate graphrpi
+pip install -r requirements.txt
+```
+3. **ESM-2 Language model embeddings**
 ```bash
 https://huggingface.co/facebook/esm2_t6_8M_UR50D
 ```
