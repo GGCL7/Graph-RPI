@@ -47,3 +47,17 @@ python Multiple_pairs_prediction.py \
     -rna "./Multiple/RNA.txt" \
     -o "record.json"
 ```
+## 📄 Citations
+If you use ESM-2 Language model in your work, please cite this paper:
+```bash
+@article{lin2023evolutionary,
+  title={Evolutionary-scale prediction of atomic-level protein structure with a language model},
+  author={Lin, Zeming and Akin, Halil and Rao, Roshan and Hie, Brian and Zhu, Zhongkai and Lu, Wenting and Smetanin, Nikita and Verkuil, Robert and Kabeli, Ori and Shmueli, Yaniv and others},
+  journal={Science},
+  volume={379},
+  number={6637},
+  pages={1123--1130},
+  year={2023},
+  publisher={American Association for the Advancement of Science}
+}
+```
