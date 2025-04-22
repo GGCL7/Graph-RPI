@@ -26,12 +26,8 @@ pip install -r requirements.txt
 https://huggingface.co/facebook/esm2_t6_8M_UR50D
 ```
 
-# Predicting RNA-protein interactions
-## Using Graph-RPI for RNA-protein interaction prediction
 
-```bash
-Cd Graph-RPI
-```
+# Using Graph-RPI for RNA-protein interaction prediction
 
 ## Single pair prediction
 
